@@ -1,0 +1,48 @@
+{
+  "globals": {
+    "$": false
+  },
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "max-len": [
+      "error",
+      120
+    ],
+    "comma-dangle": 2,
+    "func-names": 2,
+    "no-console": 2,
+    "no-multi-spaces": 2,
+    "no-shadow": 2,
+    "no-underscore-dangle": 2,
+    "no-useless-constructor": 2,
+    "object-curly-spacing": 2,
+    "padded-blocks": 2,
+    "prefer-const": 2,
+    "vars-on-top": 2,
+
+    "arrow-body-style": 0,
+    "arrow-parens": 0,
+    "import/no-named-as-default": 0,
+    "import/no-unresolved": 0,
+    "semi": 0
+  }
+}

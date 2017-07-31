@@ -1,0 +1,76 @@
+{
+  "name": "amgrade-mock-boilerplate",
+  "version": "1.0.0",
+  "main": "public/index.html",
+  "scripts": {
+    "build": "npx npm-run-all -p css js images:min",
+    "css": "npx npm-run-all css:preprocess css:postprocess",
+    "js": "npx npm-run-all js:bundle js:min",
+    "lint": "npx npm-run-all -p js:lint css:lint",
+    "precommit": "lint-staged",
+    "start": "npx npm-run-all -p js:watch css:watch",
+    "images:min": "npx imagemin src/images/**/* --out-dir=public/assets/images",
+    "css:lint": "npx sass-lint -c .sass-lint.yml -v",
+    "css:postprocess": "npx postcss public/assets/css/*.css --dir public/assets/css --use css-mqpacker autoprefixer cssnano",
+    "css:preprocess": "npx node-sass --include-path src/scss src/scss -o public/assets/css",
+    "css:watch": "npm run css:preprocess -- -w",
+    "js:bundle": "npx rollup -c",
+    "js:lint": "npx eslint --fix src/js/**/*.js",
+    "js:min": "npx uglifyjs -o public/assets/js/main.js public/assets/js/main.js",
+    "js:watch": "npx rollup -c -w"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npx eslint --fix",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "npx sass-lint",
+      "git add"
+    ],
+    "src/images/**/*": [
+      "npx imagemin --out-dir=public/assets/images",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:amgradetech/amgrade-mock-boilerplate.git"
+  },
+  "author": "Rusinov Anton",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-function-bind": "^6.8.0",
+    "babel-plugin-transform-react-constant-elements": "^6.9.1",
+    "babel-plugin-transform-react-inline-elements": "^6.8.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap-sass": "^3.3.7",
+    "css-mqpacker": "^6.0.1",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3",
+    "imagemin-cli": "^3.0.0",
+    "lint-staged": "^4.0.2",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.0.2",
+    "npx": "^9.4.1",
+    "postcss-cli": "^4.0.0",
+    "rollup": "^0.45.2",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-inject": "^2.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-watch": "^4.3.1",
+    "sass-lint": "^1.10.2",
+    "scss-mixins-collection": "^1.1.3",
+    "uglify-js": "^3.0.26"
+  }
+}
