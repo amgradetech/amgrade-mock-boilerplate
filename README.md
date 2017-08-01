@@ -2,7 +2,7 @@
 Start to build `HTML + CSS + JS` with one command  
   
 ## Installation and build
-- Clone repo `git clone git@github.com:amgradetech/amgrade-mock-boilerplate.git`
+- Clone repo `git clone git@github.com:amgradetech/amgrade-mock-boilerplate.git my-mock`
 - Go into directory `cd my-mock`
 - Reinit git repo `rm -rf .git && git init`
 - Install deps `npm i`
